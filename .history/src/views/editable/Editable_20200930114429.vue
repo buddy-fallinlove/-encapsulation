@@ -1,0 +1,49 @@
+<template>
+<editable text="jack" @ok="ok" @cancel="cancel"></editable>
+<br>
+<editable text="jack"></editable>
+<br>
+<editable text="tom"></editable>
+</template>
+
+<script lang="ts">
+import editable from '../../components/editable/editable.vue'
+import {
+    defineComponent,
+    reactive,
+    toRefs,
+    SetupContext
+} from 'vue'
+import {
+    message
+} from "ant-design-vue"
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface Data {}
+
+export default defineComponent({
+    name: "",
+    components: {
+        editable
+    },
+    props: {},
+    emits: ['ok', 'cancel'],
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    setup(props, ctx: SetupContext) {
+        const data: Data = reactive < Data > ({})
+        const ok = () => {
+            message.success('点击了确定')
+        }
+        const cancel = () => {
+            message.info('点击了取消')
+        }
+        return {
+            ...toRefs(data),
+            ok,
+            cancel
+        }
+    }
+})
+</script>
+
+<style scoped lang="scss"></style>

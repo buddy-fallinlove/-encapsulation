@@ -1,0 +1,47 @@
+<template>
+<div class="box">
+    <a-input class="boxw"></a-input>
+    <a-button></a-button>
+</div>
+<br>
+<br>
+</template>
+
+<script lang="ts">
+import {
+    defineComponent,
+    reactive,
+    toRefs,
+    SetupContext
+} from 'vue'
+interface Data {
+    username: string;
+}
+export default defineComponent({
+    name: '',
+    props: {},
+    components: {
+
+    },
+    setup(props, ctx: SetupContext) {
+
+        const data: Data = reactive < Data > ({
+            username: ''
+        })
+        return {
+            ...toRefs(data),
+        }
+    },
+})
+</script>
+
+<style lang="scss" scoped>
+.box {
+    padding: 20px;
+}
+
+.boxw {
+    width: 600px;
+    margin-right: 20px;
+}
+</style>
